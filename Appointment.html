@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Appointment</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 24px;
+        }
+
+        nav a {
+            margin-right: 12px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Appointment</h1>
+<h2>Naručite svog ljubimca</h2>
+
+<nav>
+    <a href="/pets">Pet</a>
+    <a href="/appointments">Appointment</a>
+</nav>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Status</th>
+        <th>Pet ID</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="t : ${appointment}">
+        <td th:text="${t.id}"></td>
+        <td th:text="${t.date}"></td>
+        <td th:text="${t.time}"></td>
+        <td th:text="${t.status}"></td>
+        <td th:text="${t.petId}"></td>
+        <td>
+            <a th:href="@{/pets/action/{id}(id=${t.petId})}">
+                View Pet
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+```
